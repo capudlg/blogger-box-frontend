@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
-import { Post } from '../data/post';
 import { PostRaw } from '../data/post-raw';
 import { CategoryService } from './category';
 import { environment } from '../../environments/environment';
+import { Post, PostCreateInput } from '../data/post';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class PostService {
 
   constructor(
     private http: HttpClient,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
   ) {}
 
   getPosts(): Observable<Post[]> {
@@ -34,7 +34,10 @@ export class PostService {
             category: category!,
           } as Post;
         });
-      })
+      }),
     );
+  }
+  createPost(post: PostCreateInput): Observable<Post> {
+    return this.http.post<Post>(this.postsUrl, post);
   }
 }
