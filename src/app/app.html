@@ -9,32 +9,36 @@
 </nav>
 
 <main class="container">
-  <div class="row justify-content-center">
-    @for (post of posts(); track post.id) {
-      <div class="col-md-10 mb-4">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body">
-            <h2 class="card-title fw-bold text-dark">{{ post.title }}</h2>
+  <router-outlet></router-outlet>
 
-            <p class="card-text text-secondary">{{ post.content }}</p>
+  @if (posts().length > 0 || posts().length === 0) {
+    <div class="row justify-content-center">
+      @for (post of posts(); track post.id) {
+        <div class="col-md-10 mb-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title fw-bold text-dark">{{ post.title }}</h2>
 
-            <div class="mt-4 d-flex align-items-center">
-              <span class="badge bg-light text-dark border me-2">
-                {{ post.category.name }}
-              </span>
+              <p class="card-text text-secondary">{{ post.content }}</p>
 
-              <small class="text-muted">
-                {{ post.createdDate | date:'MMM d, y, h:mm:ss a' }}
-              </small>
+              <div class="mt-4 d-flex align-items-center">
+                <span class="badge bg-light text-dark border me-2">
+                  {{ post.category.name }}
+                </span>
+
+                <small class="text-muted">
+                  {{ post.createdDate | date:'MMM d, y, h:mm:ss a' }}
+                </small>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    } @empty {
-      <div class="text-center mt-5">
-        <div class="spinner-border text-dark" role="status"></div>
-        <p class="mt-2 text-muted">Chargement des articles...</p>
-      </div>
-    }
-  </div>
+      } @empty {
+        <div class="text-center mt-5">
+          <div class="spinner-border text-dark" role="status"></div>
+          <p class="mt-2 text-muted">Chargement des articles...</p>
+        </div>
+      }
+    </div>
+  }
 </main>

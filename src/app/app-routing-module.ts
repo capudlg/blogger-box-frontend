@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { App } from './app'; // Votre page d'accueil actuelle
-// Importez votre futur composant PostCreationComponent ici
+import { PostCreationComponent } from './components/post-creation/post-creation';
 
 const routes: Routes = [
-  { path: '', component: App },
-  // { path: 'add-post', component: PostCreationComponent }, // À décommenter après création du composant
+  { path: 'add-post', component: PostCreationComponent },
 ];
 
 @NgModule({
