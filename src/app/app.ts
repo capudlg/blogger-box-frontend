@@ -1,19 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { PostService } from './services/post';
-import { Post } from './data/post';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   standalone: false,
 })
-export class App implements OnInit {
+export class App {
   title = signal('BloggerBox');
-  posts = signal<Post[]>([]);
-
-  constructor(private postService: PostService) {}
-
-  ngOnInit(): void {
-    this.postService.getPosts().subscribe((data) => this.posts.set(data));
-  }
 }

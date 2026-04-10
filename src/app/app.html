@@ -3,42 +3,9 @@
     <span class="navbar-brand mb-0 h1" style="cursor: pointer" routerLink="/">{{ title() }}</span>
 
     <button class="btn btn-outline-light" routerLink="/add-post">
-      Write
+      ✏️ Post
     </button>
   </div>
 </nav>
 
-<main class="container">
-  <router-outlet></router-outlet>
-
-  @if (posts().length > 0 || posts().length === 0) {
-    <div class="row justify-content-center">
-      @for (post of posts(); track post.id) {
-        <div class="col-md-10 mb-4">
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <h2 class="card-title fw-bold text-dark">{{ post.title }}</h2>
-
-              <p class="card-text text-secondary">{{ post.content }}</p>
-
-              <div class="mt-4 d-flex align-items-center">
-                <span class="badge bg-light text-dark border me-2">
-                  {{ post.category.name }}
-                </span>
-
-                <small class="text-muted">
-                  {{ post.createdDate | date:'MMM d, y, h:mm:ss a' }}
-                </small>
-              </div>
-            </div>
-          </div>
-        </div>
-      } @empty {
-        <div class="text-center mt-5">
-          <div class="spinner-border text-dark" role="status"></div>
-          <p class="mt-2 text-muted">Chargement des articles...</p>
-        </div>
-      }
-    </div>
-  }
-</main>
+<router-outlet></router-outlet>

@@ -4,11 +4,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { App } from './app';
+import { HomeComponent } from './home/home';
 import { PostCreationComponent } from './components/post-creation/post-creation';
 
-
 @NgModule({
-  declarations: [App, PostCreationComponent],
+  declarations: [App, HomeComponent, PostCreationComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
